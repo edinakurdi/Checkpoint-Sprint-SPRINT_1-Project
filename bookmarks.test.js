@@ -1,7 +1,7 @@
 import assert from "node:assert";
 import test from "node:test";
 
-import { createBookmark } from "./logic.js";
+import { createBookmark } from "./bookmarks.js";
 
 test("createBookmark keeps url, title, description", () => {
   const bookmark = createBookmark(
