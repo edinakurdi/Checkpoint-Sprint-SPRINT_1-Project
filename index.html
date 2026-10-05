@@ -1,11 +1,66 @@
 <!DOCTYPE html>
 <html>
 
+
 <head>
-  <script type="module" src="script.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shared bookmarks</title>
+  <script type="module" src="render.js"></script>
 </head>
 
+
 <body>
+
+
+  <header>
+    <h1>Shared Bookmarks</h1>
+    <p>Save links worth coming back to, and see what other people have saved.</p>
+  </header>
+
+
+  <main>
+    <section>
+      <label for="user-selection">Choose a user</label>
+      <select name="selected-user" id="user-selection">
+        <!-- TODO JS to inject <options> here using getUserIds() -->
+      </select>
+    </section>
+
+
+    <section id="bookmarks-display-section">
+      <h2 id="bookmark-heading">Bookmarks</h2>
+      <p id="empty-message" hidden>This user hasn't saved any bookmarks yet.</p>
+      <!-- empty state - todo js to remove hidden when no bookmarks yet -->
+      <ul id="bookmark-list"></ul>
+      <!-- todo JS to add <li> for each bookmark -->
+    </section>
+
+
+    <section id="">
+      <!-- todo Dona's form to come here -->
+    </section>
+
+
+    <template id="bookmark-template">
+      <li>
+        <h3> <a class="bookmark-link" href=""></a></h3>
+        <p class="bookmark-description"></p>
+        <p>Saved: <time class="bookmark-date"></time> </p>
+        <!-- todo time markup needed -->
+        <button type="button" class="copy-button">Copy URL</button>
+        <!-- todo Dona - like button + counter -->
+      </li>
+
+
+    </template>
+
+
+  </main>
+
+
+  <footer></footer>
 </body>
+
 
 </html>
