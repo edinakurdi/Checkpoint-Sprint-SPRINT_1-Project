@@ -33,12 +33,6 @@ test("createBookmark sets createdAt as a number", () => {
   assert.equal(typeof bookmark.createdAt, "number");
 });
 
-// Tests for validateBookmark
-// test("validatePerson accepts a valid person", () => {
-//   const errors = validatePerson("Ada", "ada@example.com");
-//   assert.deepEqual(errors, {});
-// });
-
 test("validateBookmark accepts valid bookmark", () => {
   const errors = validateBookmark(
     "https://kottke.org/",
