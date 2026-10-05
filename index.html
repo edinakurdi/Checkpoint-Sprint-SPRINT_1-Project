@@ -6,7 +6,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Shared bookmarks</title>
-  <script type="module" src="render.js"></script>
+  <script type="module" src="script.js"></script>
 </head>
 
 
@@ -23,7 +23,7 @@
     <section>
       <label for="user-selection">Choose a user</label>
       <select name="selected-user" id="user-selection">
-        <!-- TODO JS to inject <options> here using getUserIds() -->
+        <!-- TODO Edina - JS to inject <options> here using getUserIds() -->
       </select>
     </section>
 
@@ -31,9 +31,15 @@
     <section id="bookmarks-display-section">
       <h2 id="bookmark-heading">Bookmarks</h2>
       <p id="empty-message" hidden>This user hasn't saved any bookmarks yet.</p>
-      <!-- empty state - todo js to remove hidden when no bookmarks yet -->
+      <!-- empty state - todo Edina - js to remove hidden when no bookmarks yet -->
       <ul id="bookmark-list"></ul>
-      <!-- todo JS to add <li> for each bookmark -->
+      <!-- todo Edina - JS to add <li> for each bookmark -->
+
+      <!-- todo -Dona DELETE this comment, im just explaining what i did:
+      "toast" - is used for temporary notification in the UI such as "added to basket" or "changes saved" etc;
+      aria-live="polite" tells the screen-reader to announce changes when it has finished speaking (so does not interrupt the user) 
+      -->
+      <p id="copy-status" class="toast" aria-live="polite"></p>
     </section>
 
 
@@ -47,9 +53,8 @@
         <h3> <a class="bookmark-link" href=""></a></h3>
         <p class="bookmark-description"></p>
         <p>Saved: <time class="bookmark-date"></time> </p>
-        <!-- todo time markup needed -->
         <button type="button" class="copy-button">Copy URL</button>
-        <!-- todo Dona - like button + counter -->
+        <!-- todo Dona - like button + counter to add here-->
       </li>
 
 
