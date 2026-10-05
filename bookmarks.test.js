@@ -47,3 +47,12 @@ test("validateBookmark accepts valid bookmark", () => {
   );
   assert.deepEqual(errors, {});
 });
+
+test("validateBookmark rejects an empty title", () => {
+  const errors = validateBookmark(
+    "https://kottke.org/",
+    "",
+    "A bookmark for Jason Kottke"
+  );
+  assert.equal(errors.title, "Title is required.");
+});
