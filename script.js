@@ -25,3 +25,14 @@ let state = {
   formErrors: {},
   status: { text: "", id: 0 }, // id increments on every message (0, 1, 2...). We need this because if a user clicks "Copy URL" twice, the text string doesn't change ("URL copied to clipboard.") and the screen reader would ignore it. Tracking `id` helps bc it tells render() a NEW action happened so screen readers re-announce it.
 };
+
+// ---------------------------------------------
+// setState
+// to delete: this is  how state will change. in updates we have what changed, and we add it to update state
+// ---------------------------------------------
+function setState(updates) {
+  state = { ...state, ...updates };
+  // the spread copies all the properies from state to a new object, then ...updates copies it new properties on top of it, overwriting any that was there before in state
+
+  render();
+}
