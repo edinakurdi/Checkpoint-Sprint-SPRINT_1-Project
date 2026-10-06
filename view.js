@@ -1,13 +1,19 @@
 export function sortNewest(bookmarks) {
-  return [...bookmarks].sort((a, b) => b.createdAt - a.createdAt);
-  //...bookmarks makes a copy first, so we dont mutate the bookmarks
-  //sorting is in reverse alphabetical order based on the timestamp in createdAt
+  if (!Array.isArray(bookmarks)) return []; //if bookmarks is null or undefined or non-array
+
+  const copiedBookmarks = [...bookmarks];
+  const sortedBookmarks = copiedBookmarks.sort(
+    (a, b) => b.createdAt - a.createdAt,
+  );
+  return sortedBookmarks;
 }
 
 export function formatTimestamp(timestamp) {
+  if (!timestamp) return "";
   //this converts the timestamp created in bookmark - date.Now() to a date with time
-  return new Date(timestamp).toLocaleString("en-GB", {
+  const date = new Date(timestamp); // converts milliseconds to Date object
+  return date.toLocaleString("en-GB", {
     dateStyle: "medium", // "6 Oct 2026" - this is more readable than just numbers - it is like Excel's short date format
-    TimeStyle: "short", // "20:51"
+    timeStyle: "short", // "20:51" --> so no seconds added
   });
 }
