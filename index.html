@@ -1,8 +1,71 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-  </body>
+<html lang="en">
+
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shared bookmarks</title>
+  <script type="module" src="script.js"></script>
+</head>
+
+
+<body>
+
+
+  <header>
+    <h1>Shared Bookmarks</h1>
+    <p>Save links worth coming back to, and see what other people have saved.</p>
+  </header>
+
+
+  <main>
+    <section>
+      <label for="user-selection">Choose a user</label>
+      <select name="selected-user" id="user-selection">
+        <!-- TODO Edina - JS to inject <options> here using getUserIds() -->
+      </select>
+    </section>
+
+
+    <section id="bookmarks-display-section">
+      <h2 id="bookmark-heading">Bookmarks</h2>
+      <p id="empty-message" hidden>This user hasn't saved any bookmarks yet.</p>
+      <!-- empty state - todo Edina - js to remove hidden when no bookmarks yet -->
+      <ul id="bookmark-list"></ul>
+      <!-- todo Edina - JS to add <li> for each bookmark -->
+
+      <!-- todo -Dona DELETE this comment, im just explaining what i did:
+      "toast" - is used for temporary notification in the UI such as "added to basket" or "changes saved" etc;
+      aria-live="polite" tells the screen-reader to announce changes when it has finished speaking (so does not interrupt the user) 
+      -->
+      <p id="copy-status" class="toast" aria-live="polite"></p>
+    </section>
+
+
+    <section id="">
+      <!-- todo Dona's form to come here -->
+    </section>
+
+
+    <template id="bookmark-template">
+      <li>
+        <h3> <a class="bookmark-link" href=""></a></h3>
+        <p class="bookmark-description"></p>
+        <p>Saved: <time class="bookmark-date"></time> </p>
+        <button type="button" class="copy-button">Copy URL</button>
+        <!-- todo Dona - like button + counter to add here-->
+      </li>
+
+
+    </template>
+
+
+  </main>
+
+
+  <footer></footer>
+</body>
+
+
 </html>
