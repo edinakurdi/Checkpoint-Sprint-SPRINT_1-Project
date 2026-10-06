@@ -44,11 +44,25 @@
         <h2 id="add-bookmark-heading">Add a bookmark</h2>
         <form id="bookmark-form">
           <label for="bookmark-url">URL</label>
-          <input id="bookmark-url" type="text" />
+          <input
+            id="bookmark-url"
+            type="text"
+            aria-describedby="bookmark-url-error"
+          />
+          <p id="bookmark-url-error"></p>
           <label for="bookmark-title">Title</label>
-          <input id="bookmark-title" type="text" />
+          <input
+            id="bookmark-title"
+            type="text"
+            aria-describedby="bookmark-title-error"
+          />
+          <p id="bookmark-title-error"></p>
           <label for="bookmark-description">Description</label>
-          <textarea id="bookmark-description"></textarea>
+          <textarea
+            id="bookmark-description"
+            aria-describedby="bookmark-description-error"
+          ></textarea>
+          <p id="bookmark-description-error"></p>
           <button type="submit">Add bookmark</button>
         </form>
       </section>

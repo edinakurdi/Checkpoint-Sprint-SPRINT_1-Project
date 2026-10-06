@@ -7,5 +7,9 @@ form.addEventListener("submit", (event) => {
   const title = document.getElementById("bookmark-title").value;
   const description = document.getElementById("bookmark-description").value;
   const errors = validateBookmark(url, title, description);
-  console.log(errors);
+  document.getElementById("bookmark-url-error").textContent = errors.url || "";
+  document.getElementById("bookmark-title-error").textContent =
+    errors.title || "";
+  document.getElementById("bookmark-description-error").textContent =
+    errors.description || "";
 });
