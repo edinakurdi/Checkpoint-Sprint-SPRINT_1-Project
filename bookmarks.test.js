@@ -56,3 +56,21 @@ test("validateBookmark rejects an empty description", () => {
   const errors = validateBookmark("https://kottke.org/", "Kottke", "  ");
   assert.equal(errors.description, "Description is required.");
 });
+
+test("validateBookmark rejects an URL that is not http or https", () => {
+  const errors = validateBookmark(
+    "httbs://kottke.org/",
+    "Kottke",
+    "A bookmark for Jason Kottke"
+  );
+  assert.equal(errors.url, "A valid URL is required.");
+});
+
+test("validateBookmark rejects text that is not a URL", () => {
+  const errors = validateBookmark(
+    "kottke",
+    "Kottke",
+    "A bookmark for Jason Kottke"
+  );
+  assert.equal(errors.url, "A valid URL is required.");
+});
