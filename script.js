@@ -2,6 +2,7 @@
 // IMPORTS
 // ---------------------------------------------
 import { getUserIds } from "./storage.js";
+import { sortNewest, formatTimestamp } from "./view.js";
 // ---------------------------------------------
 // DOM elements
 // ---------------------------------------------
@@ -27,7 +28,7 @@ let state = {
 };
 
 // ---------------------------------------------
-// setState
+// setSTATE
 // to delete: this is  how state will change. in updates we have what changed, and we add it to update state
 // ---------------------------------------------
 function setState(updates) {
@@ -36,3 +37,31 @@ function setState(updates) {
 
   render();
 }
+
+// ---------------------------------------------
+// RENDER
+// ---------------------------------------------
+
+//----------------------
+//section: dropdown
+//----------------------
+userSelect.innerHTML = ""; //empties options
+
+// Populate the dropdown menu by creating an <option> element for each user ID
+state.userIds.forEach((id) => {
+  const option = document.createElement("option");
+  option.value = id;
+  option.textContent = `User ${id}`;
+  userSelect.append(option);
+});
+
+userSelect.value = state.selectedUserId; //shows the chosen userID
+
+//----------------------
+//section: bookmark list
+//----------------------
+
+bookmarkList.innerHTML = ""; //empties bookmarks list
+
+const sortedBookmarks = sortNewest(state.bookmarks);
+emptyMessage.hidden = sortedBookmarks.length > 0; // hide the empty message when the bookmarks are not empty
