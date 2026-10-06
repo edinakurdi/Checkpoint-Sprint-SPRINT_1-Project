@@ -33,6 +33,7 @@ test("createBookmark sets createdAt as a number", () => {
   assert.equal(typeof bookmark.createdAt, "number");
 });
 
+// Tests for validateBookmark
 test("validateBookmark accepts valid bookmark", () => {
   const errors = validateBookmark(
     "https://kottke.org/",
@@ -49,4 +50,9 @@ test("validateBookmark rejects an empty title", () => {
     "A bookmark for Jason Kottke"
   );
   assert.equal(errors.title, "Title is required.");
+});
+
+test("validateBookmark rejects an empty description", () => {
+  const errors = validateBookmark("https://kottke.org/", "Kottke", "  ");
+  assert.equal(errors.description, "Description is required.");
 });
