@@ -1,8 +1,9 @@
 import assert from "node:assert";
 import test from "node:test";
 
-import { createBookmark } from "./bookmarks.js";
+import { createBookmark, validateBookmark } from "./bookmarks.js";
 
+// Tests for createBookmark
 test("createBookmark keeps url, title, description", () => {
   const bookmark = createBookmark(
     "https://kottke.org/",
@@ -30,4 +31,46 @@ test("createBookmark sets createdAt as a number", () => {
     "A bookmark for Jason Kottke"
   );
   assert.equal(typeof bookmark.createdAt, "number");
+});
+
+// Tests for validateBookmark
+test("validateBookmark accepts valid bookmark", () => {
+  const errors = validateBookmark(
+    "https://kottke.org/",
+    "Kottke",
+    "A bookmark for Jason Kottke"
+  );
+  assert.deepEqual(errors, {});
+});
+
+test("validateBookmark rejects an empty title", () => {
+  const errors = validateBookmark(
+    "https://kottke.org/",
+    "",
+    "A bookmark for Jason Kottke"
+  );
+  assert.equal(errors.title, "Title is required.");
+});
+
+test("validateBookmark rejects an empty description", () => {
+  const errors = validateBookmark("https://kottke.org/", "Kottke", "  ");
+  assert.equal(errors.description, "Description is required.");
+});
+
+test("validateBookmark rejects an URL that is not http or https", () => {
+  const errors = validateBookmark(
+    "httbs://kottke.org/",
+    "Kottke",
+    "A bookmark for Jason Kottke"
+  );
+  assert.equal(errors.url, "A valid URL is required.");
+});
+
+test("validateBookmark rejects text that is not a URL", () => {
+  const errors = validateBookmark(
+    "kottke",
+    "Kottke",
+    "A bookmark for Jason Kottke"
+  );
+  assert.equal(errors.url, "A valid URL is required.");
 });
