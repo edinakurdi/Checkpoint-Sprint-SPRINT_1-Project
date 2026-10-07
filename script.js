@@ -41,6 +41,8 @@ function setState(updates) {
 // ---------------------------------------------
 // RENDER
 // ---------------------------------------------
+const focusedId = document.activeElement?.id;
+// this record the ID of the focused button before the render() clears the page
 
 //----------------------
 //section: dropdown
@@ -76,7 +78,19 @@ for (const bookmark of sortedBookmarks) {
   item.querySelector(".bookmark-description").textContent =
     bookmark.description;
 
-  const date = item.querySelector("bookmark-date");
+  const date = item.querySelector(".bookmark-date");
   date.textContent = formatTimestamp(bookmark.createdAt);
 
+  // Copy URL button
 
+  const copyBtn = item.querySelector(".copy-button");
+  copyButton.id = `copy-${bookmark.createdAt}`; //this is for accessibility: When a user presses Enter on a Like button, it keeps focus on that button after the page reloads.
+  copyBtn.addEventListener("click", () => {
+    copyUrl(bookmark.url);
+  });
+
+  // todo [Dona] to add Like button.
+  // Add focus the same way too
+
+  bookmarksList.append(item);
+}
