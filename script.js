@@ -65,3 +65,18 @@ bookmarkList.innerHTML = ""; //empties bookmarks list
 
 const sortedBookmarks = sortNewest(state.bookmarks);
 emptyMessage.hidden = sortedBookmarks.length > 0; // hide the empty message when the bookmarks are not empty
+
+for (const bookmark of sortedBookmarks) {
+  const item = bookmarkTemplate.content.cloneNode(true);
+
+  const link = item.querySelector(".bookmark-link");
+  link.href = bookmark.url;
+  link.textContent = bookmark.title;
+
+  item.querySelector(".bookmark-description").textContent =
+    bookmark.description;
+
+  const date = item.querySelector("bookmark-date");
+  date.textContent = formatTimestamp(bookmark.createdAt);
+
+
