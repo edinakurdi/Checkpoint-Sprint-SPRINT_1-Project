@@ -1,5 +1,5 @@
 import { validateBookmark, createBookmark, addBookmark } from "./bookmarks.js";
-import { renderBookmarks } from "./view.js"; //todo delete
+import { renderBookmarks } from "./view.js";
 const form = document.getElementById("bookmark-form");
 
 form.addEventListener("submit", (event) => {
