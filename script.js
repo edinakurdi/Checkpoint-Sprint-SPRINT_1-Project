@@ -3,13 +3,14 @@
 //==================================
 import { getUserIds, getData } from "./storage.js";
 import { sortNewest, formatTimestamp } from "./view.js";
-
+import "./form.js";
 //==================================
 // DOM elements
 //==================================
 const userSelect = document.getElementById("user-selection");
 const bookmarkList = document.getElementById("bookmark-list");
 const bookmarkTemplate = document.getElementById("bookmark-template");
+const bookmarkForm = document.getElementById("bookmark-form");
 
 //==================================
 //DROPDOWN
@@ -27,7 +28,7 @@ function populateUserDropdown() {
 //==================================
 //show the selected user's bookmarks
 //==================================
-function renderBookmarks() {
+export function renderBookmarks() {
   const userId = userSelect.value;
 
   const bookmarks = sortNewest(getData(userId));
@@ -62,3 +63,4 @@ populateUserDropdown();
 renderBookmarks();
 
 userSelect.addEventListener("change", renderBookmarks);
+bookmarkForm.addEventListener("submit", renderBookmarks);
