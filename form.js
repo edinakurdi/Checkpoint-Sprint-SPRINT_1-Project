@@ -1,4 +1,4 @@
-import { validateBookmark } from "./bookmarks.js";
+import { validateBookmark, createBookmark, addBookmark } from "./bookmarks.js";
 const form = document.getElementById("bookmark-form");
 
 form.addEventListener("submit", (event) => {
@@ -12,4 +12,10 @@ form.addEventListener("submit", (event) => {
     errors.title || "";
   document.getElementById("bookmark-description-error").textContent =
     errors.description || "";
+  if (Object.keys(errors).length === 0) {
+    const bookmark = createBookmark(url, title, description);
+    const userId = document.getElementById("user-selection").value;
+    addBookmark(userId, bookmark);
+    form.reset();
+  }
 });
