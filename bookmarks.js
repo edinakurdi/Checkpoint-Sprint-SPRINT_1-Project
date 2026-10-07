@@ -2,9 +2,9 @@ import { getData, setData } from "./storage.js";
 
 export function createBookmark(url, title, description) {
   const newBookmark = {
-    url: url,
-    title: title,
-    description: description,
+    url: url.trim(),
+    title: title.trim(),
+    description: description.trim(),
     createdAt: Date.now(),
     likes: 0,
   };
@@ -18,10 +18,10 @@ export function addBookmark(userId, bookmark) {
 }
 export function validateBookmark(url, title, description) {
   const errors = {};
-  if (!title.trim()) {
+  if (!title) {
     errors.title = "Title is required.";
   }
-  if (!description.trim()) {
+  if (!description) {
     errors.description = "Description is required.";
   }
   if (!isWebAddress(url)) {
