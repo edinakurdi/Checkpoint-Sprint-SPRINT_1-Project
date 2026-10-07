@@ -1,4 +1,5 @@
 import { validateBookmark, createBookmark, addBookmark } from "./bookmarks.js";
+import { renderBookmarks } from "./view.js";
 const form = document.getElementById("bookmark-form");
 
 form.addEventListener("submit", (event) => {
@@ -16,6 +17,7 @@ form.addEventListener("submit", (event) => {
     const bookmark = createBookmark(url, title, description);
     const userId = document.getElementById("user-selection").value;
     addBookmark(userId, bookmark);
+    renderBookmarks(userId); // i had to add this so the bookmark saves
     form.reset();
   }
 });
