@@ -16,5 +16,6 @@ form.addEventListener("submit", (event) => {
     const bookmark = createBookmark(url, title, description);
     const userId = document.getElementById("user-selection").value;
     addBookmark(userId, bookmark);
+    form.reset();
   }
 });
