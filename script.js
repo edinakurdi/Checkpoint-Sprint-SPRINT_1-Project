@@ -94,3 +94,7 @@ for (const bookmark of sortedBookmarks) {
 
   bookmarksList.append(item);
 }
+
+if (focusedId) {
+  document.getElementById(focusedId)?.focus();
+} // If focusedId exists, JavaScript finds the matching element (the element with id="like-1791294347938") in the newly rendered page and moves the keyboard focus to it.
