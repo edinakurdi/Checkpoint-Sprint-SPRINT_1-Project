@@ -1,5 +1,3 @@
-import { getData } from "./storage.js";
-
 export function sortNewest(bookmarks) {
   if (!Array.isArray(bookmarks)) return []; //if bookmarks is null or undefined or non-array
 
