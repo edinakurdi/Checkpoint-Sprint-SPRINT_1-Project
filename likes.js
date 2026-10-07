@@ -9,4 +9,5 @@ export function incrementLike(userId, createdAt) {
     return bookmark;
   });
   setData(userId, updatedBookmarks);
+  return updatedBookmarks;
 }
