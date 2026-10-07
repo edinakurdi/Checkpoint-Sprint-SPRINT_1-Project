@@ -1,3 +1,5 @@
+import { getData, setData } from "./storage.js";
+
 export function createBookmark(url, title, description) {
   const newBookmark = {
     url: url,
@@ -9,6 +11,11 @@ export function createBookmark(url, title, description) {
   return newBookmark;
 }
 
+export function addBookmark(userId, bookmark) {
+  const savedBookmarks = getData(userId) || [];
+  const updatedBookmarks = [...savedBookmarks, bookmark];
+  setData(userId, updatedBookmarks);
+}
 export function validateBookmark(url, title, description) {
   const errors = {};
   if (!title.trim()) {
