@@ -27,6 +27,7 @@ export function renderBookmarks(userId) {
   const bookmarks = sortNewest(getData(userId));
 
   bookmarkList.replaceChildren();
+  emptyMessage.hidden = bookmarks.length > 0;
   bookmarks.forEach((bookmark) => {
     const card = bookmarkTemplate.content.cloneNode(true);
 
