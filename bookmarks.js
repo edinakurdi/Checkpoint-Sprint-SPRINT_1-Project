@@ -18,10 +18,10 @@ export function addBookmark(userId, bookmark) {
 }
 export function validateBookmark(url, title, description) {
   const errors = {};
-  if (!title) {
+  if (!title.trim()) {
     errors.title = "Title is required.";
   }
-  if (!description) {
+  if (!description.trim()) {
     errors.description = "Description is required.";
   }
   if (!isWebAddress(url)) {
