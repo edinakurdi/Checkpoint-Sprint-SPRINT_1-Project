@@ -17,7 +17,7 @@ form.addEventListener("submit", (event) => {
     const bookmark = createBookmark(url, title, description);
     const userId = document.getElementById("user-selection").value;
     addBookmark(userId, bookmark);
-    renderBookmarks(userId); // i had to add this so the bookmark saves
+    renderBookmarks(userId); // Redraw the list so the new bookmark appears straight away
     form.reset();
   }
 });

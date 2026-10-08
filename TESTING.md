@@ -26,7 +26,9 @@ Manual test: click a bookmark's title. It opens that bookmark's URL in a new tab
 
 ## Each bookmark's "Copy to clipboard" button must copy the URL of the bookmark
 
-Manual test: click "Copy URL" on a bookmark, paste into the address bar, and check it is that bookmark's URL.
+Manual test: click "Copy URL" on a bookmark, paste into the address bar, and check it is that bookmark's URL. The message "URL copied to clipboard" appears and disappears after 2 seconds.
+
+Failure test: open the page using the network address that `npx http-server` prints (for example http://192.168.1.5:8080, not 127.0.0.1). This is not a secure page, so copying is blocked. Clicking "Copy URL" shows "Couldn't copy the URL. Please copy it from the link instead."
 
 ## Each bookmark's like counter works independently, and persists data across sessions
 
@@ -54,4 +56,4 @@ Unit tests in `bookmarks.test.js` cover `validateBookmark` (valid input, empty t
 
 ## The project must not contain any dead code. All written JavaScript and CSS must be used.
 
-Manual review: searched every file for unused functions, unused imports, commented-out code and leftover TODO comments, and removed them. `npm test` passes.
+Manual review: searched every file for unused functions, unused imports, unused return values, checks that can never be false, commented-out code and leftover TODO comments, and removed them. Ran `git ls-files` to confirm no leftover copies (such as viewCopy.js) are in the repo. `npm test` passes.
