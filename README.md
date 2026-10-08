@@ -1,4 +1,44 @@
-# Project: Shared Bookmarks
+# Shared bookmarks
+
+A small website where five users can save links, share them, and like each other's bookmarks.
+
+The site is live at: <add link todo >
+
+# Built with
+
+html, JavaScript
+
+# What the website does
+
+- Lets you choose a user and view their bookmarks, with the newest shown first
+- Shows each bookmark’s title, URL (linked in title), description, creation time, like button, and like count
+- Lets you copy a bookmark’s URL with one click
+- Lets users add bookmarks using an accessible form
+- Saves bookmarks and likes in the browser, so they remain after closing and reopening the website
+- Includes unit tests to check that the website works
+
+# How to run it
+
+1. Clone the repo
+2. Open the project in your code editor and start a local server
+3. Open the website in your browser
+   The website needs to be opened this way because it uses JavaScript modules.
+
+## How to test it
+
+Run `npm test`
+
+## Accessibility
+
+Every view scores 100% in Lighthouse (Desktop, Navigation mode)
+
+## Built by
+
+Liridona Shehu and Edina Kurdi
+
+# Original Project brief
+
+## Project: Shared Bookmarks
 
 As developers, we spend a lot of time reading articles on the web and we often want to record useful links to come back to them later. It is fun to share your bookmarks with others so that they can find interesting and useful links too.
 
@@ -13,7 +53,7 @@ Your task is to write code which allows a user to save a link with a short descr
 
 You should make a frontend, which displays a list of bookmarked links and the user's description. A user can create new bookmarks by submitting a form with the URL and the description. You should use HTML and JavaScript for this. We want to focus on your ability to create the correct logic and not spend time on creating the perfect UI. You are allowed to use CSS, but you are strongly advised to focus on the logic, and only add styling when you are finished. You will not get any credit for styling.
 
-## Supplied scaffolding
+### Supplied scaffolding
 
 We have supplied a few sample files in the repo to demonstrate how you can define functions in one file and use them from another file. Feel free to use these files in your solution if you want, or to just use them for inspiration for your own solution.
 
@@ -28,7 +68,7 @@ We have also provided a `storage.js` file, which contains four functions to help
 
 **Note**: None of the storage functions perform any validation or de-duplication, so ensure that you are sending the correct data before storing it.
 
-## Requirements
+### Requirements
 
 You must submit both a link to your GitHub repo, and a link to the deployed website. Your project must meet all [project submission requirements](https://curriculum.codeyourfuture.io/checkpoint/prep/#project-submission).
 
@@ -43,6 +83,7 @@ You **must not** implement any kind of authentication. Just a drop-down to choos
 After picking a user, your website should display the list of bookmarks in reverse chronological order. For each bookmark, it should display the title and description of the bookmark. The title should be hyperlink to the URL of the bookmark. The timestamp at which the bookmark was created should be displayed.
 
 Each bookmark should also have:
+
 - A button which, when clicked, copies the URL to the clipboard.
 - A like counter/button. When a bookmark is first saved, its like count should be 0. Each time a user clicks the like button, that number should go up by one, and be displayed. This like count should be persisted such that closing the page and coming back to it, it is preserved.
 
@@ -56,7 +97,7 @@ Your GitHub repository must contain unit tests which demonstrate that your code 
 
 Every view of your website must be accessible (i.e. for each user, whether or not they have bookmarks, etc). We will test this by making sure that "Snapshot" mode of Lighthouse gives 100% accessibility for any view we look at.
 
-## Rubric
+### Rubric
 
 All of the below requirements must be met for the project to be considered complete:
 
