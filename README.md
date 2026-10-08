@@ -2,11 +2,12 @@
 
 A small website where five users can save links, share them, and like each other's bookmarks.
 
-The site is live at: <add link todo >
+The site is live at: https://edinakurdi.github.io/Checkpoint-Sprint-SPRINT_1-Project/
+The site is live at: <https://edinakurdi.github.io/Checkpoint-Sprint-SPRINT_1-Project/ >
 
 # Built with
 
-html, JavaScript
+HTML, JavaScript
 
 # What the website does
 
@@ -20,9 +21,8 @@ html, JavaScript
 # How to run it
 
 1. Clone the repo
-2. Open the project in your code editor and start a local server
-3. Open the website in your browser
-   The website needs to be opened this way because it uses JavaScript modules.
+2. In the project folder, run `npx http-server`
+3. Open the address it prints (for example http://127.0.0.1:8080)
 
 ## How to test it
 
@@ -30,7 +30,7 @@ Run `npm test`
 
 ## Accessibility
 
-Every view scores 100% in Lighthouse (Desktop, Navigation mode)
+- Every view scores 100% in Lighthouse (Desktop, Snapshot mode)
 
 ## Built by
 

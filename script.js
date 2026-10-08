@@ -1,7 +1,7 @@
 //==================================
 //IMPORTS
 //==================================
-import { getUserIds, getData } from "./storage.js";
+import { getUserIds } from "./storage.js";
 import { renderBookmarks } from "./view.js";
 
 //==================================

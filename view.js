@@ -62,9 +62,8 @@ export function renderBookmarks(userId) {
 }
 
 // Copies a URL to the clipboard, then tells the user (screen-reader users included)
-async function copyUrl(url, copyStatusEl) {
+async function copyUrl(url, copyStatus) {
   // The page element is looked up inside the function or passed, so Node tests don't crash. (they dont have document element apparently)
-  const copyStatus = copyStatusEl || document.getElementById("copy-status");
 
   try {
     if (!navigator.clipboard) {
