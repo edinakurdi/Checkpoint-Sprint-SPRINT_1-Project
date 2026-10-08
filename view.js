@@ -42,9 +42,47 @@ export function renderBookmarks(userId) {
     time.textContent = formatTimestamp(bookmark.createdAt);
     time.dateTime = new Date(bookmark.createdAt).toISOString();
 
-    // todo [Edina] copy button
+    const copyButton = card.querySelector(".copy-button");
+    const copyStatus = card.querySelector(".copy-status");
+    copyButton.addEventListener("click", () =>
+      copyUrl(bookmark.url, copyStatus),
+    );
+
     // todo [Dona] like button
 
     bookmarkList.append(card);
   });
+}
+
+// Copies a URL to the clipboard, then tells the user (screen-reader users included)
+async function copyUrl(url, copyStatusEl) {
+  // The page element is looked up inside the function or passed, so Node tests don't crash. (they dont have document element apparently)
+  const copyStatus = copyStatusEl || document.getElementById("copy-status");
+
+  try {
+    if (!navigator.clipboard) {
+      //navigator.clipboard is only available in secure contexts (https:// or http://localhost)
+      throw new Error(
+        "We couldn’t copy that to your clipboard because this page isn’t using a secure connection. Please use https:// and try again, or copy the text manually.",
+      );
+    }
+    // Wait until the browser has finished copying
+    await navigator.clipboard.writeText(url);
+    if (copyStatus) {
+      copyStatus.textContent = "URL copied to clipboard";
+    }
+  } catch (error) {
+    console.error("Failed to copy URL:", error);
+    if (copyStatus) {
+      // fyi: aria-live attribute on this element-->  screen readers will read it out
+      copyStatus.textContent = "URL copied to clipboard";
+    }
+  } finally {
+    if (copyStatus) {
+      // After 2 seconds clear it, so the same message can be announced again next time
+      setTimeout(() => {
+        copyStatus.textContent = "";
+      }, 2000);
+    }
+  }
 }
