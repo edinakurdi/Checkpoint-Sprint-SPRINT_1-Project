@@ -1,11 +1,12 @@
 import { getData } from "./storage.js";
+import { incrementLike } from "./likes.js";
 
 export function sortNewest(bookmarks) {
   if (!Array.isArray(bookmarks)) return []; //if bookmarks is null or undefined or non-array
 
   const copiedBookmarks = [...bookmarks];
   const sortedBookmarks = copiedBookmarks.sort(
-    (a, b) => b.createdAt - a.createdAt,
+    (a, b) => b.createdAt - a.createdAt
   );
   return sortedBookmarks;
 }
@@ -45,10 +46,16 @@ export function renderBookmarks(userId) {
     const copyButton = card.querySelector(".copy-button");
     const copyStatus = card.querySelector(".copy-status");
     copyButton.addEventListener("click", () =>
-      copyUrl(bookmark.url, copyStatus),
+      copyUrl(bookmark.url, copyStatus)
     );
 
-    // todo [Dona] like button
+    const likeCount = card.querySelector(".like-count");
+    likeCount.textContent = bookmark.likes;
+    const likeButton = card.querySelector(".like-button");
+    likeButton.addEventListener("click", () => {
+      incrementLike(userId, bookmark.createdAt);
+      renderBookmarks(userId);
+    });
 
     bookmarkList.append(card);
   });
@@ -63,7 +70,7 @@ async function copyUrl(url, copyStatusEl) {
     if (!navigator.clipboard) {
       //navigator.clipboard is only available in secure contexts (https:// or http://localhost)
       throw new Error(
-        "We couldn’t copy that to your clipboard because this page isn’t using a secure connection. Please use https:// and try again, or copy the text manually.",
+        "We couldn’t copy that to your clipboard because this page isn’t using a secure connection. Please use https:// and try again, or copy the text manually."
       );
     }
     // Wait until the browser has finished copying
