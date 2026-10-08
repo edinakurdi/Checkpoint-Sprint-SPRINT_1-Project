@@ -3,7 +3,6 @@
 A small website where five users can save links, share them, and like each other's bookmarks.
 
 The site is live at: https://edinakurdi.github.io/Checkpoint-Sprint-SPRINT_1-Project/
-The site is live at: <https://edinakurdi.github.io/Checkpoint-Sprint-SPRINT_1-Project/ >
 
 # Built with
 
