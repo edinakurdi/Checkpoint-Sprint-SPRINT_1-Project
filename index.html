@@ -21,9 +21,7 @@
     <section aria-labelledby="user-selection-heading">
       <h2 id="user-selection-heading">Select User</h2>
       <label for="user-selection">Choose a user</label>
-      <select name="selected-user" id="user-selection">
-
-      </select>
+      <select name="selected-user" id="user-selection"></select>
     </section>
 
     <section id="bookmarks-display-section" aria-labelledby="bookmark-heading">
@@ -33,26 +31,19 @@
       </p>
 
       <ul id="bookmark-list"></ul>
-      <!-- JS to populate <li> here -->
-
-      <!-- todo -Dona DELETE this comment, im just explaining what i did:
-      "toast" - is used for temporary notification in the UI such as "added to basket" or "changes saved" etc;
-      aria-live="polite" tells the screen-reader to announce changes when it has finished speaking (so does not interrupt the user) 
-      -->
       <p id="copy-status" class="toast" aria-live="polite"></p>
     </section>
 
     <section aria-labelledby="add-bookmark-heading">
       <h2 id="add-bookmark-heading">Add a bookmark</h2>
-      <form id="bookmark-form">
-
+      <form id="bookmark-form" novalidate>
         <label for="bookmark-url">URL</label>
         <input id="bookmark-url" type="url" aria-describedby="bookmark-url-error"
           placeholder="https://yourwebsite.com" />
         <p id="bookmark-url-error"></p>
 
         <label for="bookmark-title">Title</label>
-        <input id="bookmark-title" type="text" aria-describedby="bookmark-title-error" placeholder=" Enter a title" />
+        <input id="bookmark-title" type="text" aria-describedby="bookmark-title-error" placeholder="Enter a title" />
         <p id="bookmark-title-error"></p>
 
         <label for="bookmark-description">Description</label>
@@ -66,19 +57,24 @@
 
     <template id="bookmark-template">
       <li>
-        <h3><a class="bookmark-link" target="_blank" rel="noopener noreferrer"></a></h3>
+        <h3>
+          <a class="bookmark-link" target="_blank" rel="noopener noreferrer"></a>
+        </h3>
         <p class="bookmark-description"></p>
         <p>Saved: <time class="bookmark-date"></time></p>
         <div class="bookmark-actions">
           <button type="button" class="copy-button">Copy URL</button>
-          <!-- todo Dona - like button + counter to add here-->
+          <p class="copy-status toast" aria-live="polite"></p>
+          <button type="button" class="like-button">Like</button>
+          <span class="like-count">0</span>
         </div>
       </li>
     </template>
+
   </main>
 
   <footer>
-    <p>&copy; Shared Bookmarks Application - Project by Edina Kurdi & Liridona Sheu</p>
+    <p>&copy; Shared Bookmarks Application - Project by Edina Kurdi &amp; Liridona Shehu</p>
   </footer>
 </body>
 
