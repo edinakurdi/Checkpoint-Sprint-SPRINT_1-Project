@@ -6,7 +6,7 @@ export function sortNewest(bookmarks) {
 
   const copiedBookmarks = [...bookmarks];
   const sortedBookmarks = copiedBookmarks.sort(
-    (a, b) => b.createdAt - a.createdAt
+    (a, b) => b.createdAt - a.createdAt,
   );
   return sortedBookmarks;
 }
@@ -46,7 +46,7 @@ export function renderBookmarks(userId) {
     const copyButton = card.querySelector(".copy-button");
     const copyStatus = card.querySelector(".copy-status");
     copyButton.addEventListener("click", () =>
-      copyUrl(bookmark.url, copyStatus)
+      copyUrl(bookmark.url, copyStatus),
     );
 
     const likeCount = card.querySelector(".like-count");
@@ -70,7 +70,7 @@ async function copyUrl(url, copyStatusEl) {
     if (!navigator.clipboard) {
       //navigator.clipboard is only available in secure contexts (https:// or http://localhost)
       throw new Error(
-        "We couldn’t copy that to your clipboard because this page isn’t using a secure connection. Please use https:// and try again, or copy the text manually."
+        "We couldn’t copy that to your clipboard because this page isn’t using a secure connection. Please use https:// and try again, or copy the text manually.",
       );
     }
     // Wait until the browser has finished copying
