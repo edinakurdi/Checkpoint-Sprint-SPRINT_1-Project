@@ -25,6 +25,8 @@ HTML, JavaScript
 
 ## How to test it
 
+Requires Node 18 or later, because the tests use Node's built-in test runner (`node:test`). Tested with Node 24.
+
 Run `npm test`
 
 ## Accessibility

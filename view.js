@@ -13,10 +13,10 @@ export function sortNewest(bookmarks) {
 
 export function formatTimestamp(timestamp) {
   if (!timestamp) return "";
-  //this converts the timestamp created in bookmark - date.Now() to a date with time
+  // Converts the number from Date.now() into a readable date and time
   const date = new Date(timestamp); // converts milliseconds to Date object
   return date.toLocaleString("en-GB", {
-    dateStyle: "medium", // "6 Oct 2026" - this is more readable than just numbers - it is like Excel's short date format
+    dateStyle: "medium", // "6 Oct 2026": month as a word is easier to read than numbers
     timeStyle: "short", // "20:51" --> so no seconds added
   });
 }
@@ -26,6 +26,7 @@ export function renderBookmarks(userId) {
   const bookmarkTemplate = document.getElementById("bookmark-template");
   const emptyMessage = document.getElementById("empty-message");
   const bookmarks = sortNewest(getData(userId));
+  // document is only used inside this function, so tests can import view.js in Node (which has no page/document) without crashing
 
   bookmarkList.replaceChildren();
   emptyMessage.hidden = bookmarks.length > 0;
@@ -60,11 +61,8 @@ export function renderBookmarks(userId) {
     bookmarkList.append(card);
   });
 }
-
 // Copies a URL to the clipboard, then tells the user (screen-reader users included)
 async function copyUrl(url, copyStatus) {
-  // The page element is looked up inside the function or passed, so Node tests don't crash. (they dont have document element apparently)
-
   try {
     if (!navigator.clipboard) {
       //navigator.clipboard is only available in secure contexts (https:// or http://localhost)
@@ -74,21 +72,16 @@ async function copyUrl(url, copyStatus) {
     }
     // Wait until the browser has finished copying
     await navigator.clipboard.writeText(url);
-    if (copyStatus) {
-      copyStatus.textContent = "URL copied to clipboard";
-    }
+    copyStatus.textContent = "URL copied to clipboard";
   } catch (error) {
     console.error("Failed to copy URL:", error);
-    if (copyStatus) {
-      // fyi: aria-live attribute on this element-->  screen readers will read it out
-      copyStatus.textContent = "URL copied to clipboard";
-    }
+    copyStatus.textContent =
+      "Couldn't copy the URL. Please copy it from the link instead.";
   } finally {
-    if (copyStatus) {
-      // After 2 seconds clear it, so the same message can be announced again next time
-      setTimeout(() => {
-        copyStatus.textContent = "";
-      }, 2000);
-    }
+    // `finally` runs whether copying worked or failed.
+    // After 2 seconds, clear the message so the same message can be announced again next time.
+    setTimeout(() => {
+      copyStatus.textContent = "";
+    }, 2000);
   }
 }
