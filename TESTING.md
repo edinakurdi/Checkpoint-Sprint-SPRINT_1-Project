@@ -14,7 +14,7 @@ Manual test: select a user with no saved bookmarks. The message "This user hasn'
 
 ## The list of bookmarks must be shown in reverse chronological order
 
-Unit tests in `[test file for sortNewest]` check that `sortNewest` puts the newest bookmark first. Manual test: add three bookmarks for one user and check the last one added is at the top.
+Unit tests in `view.test.js` check that `sortNewest` puts the newest bookmark first, returns an empty array for empty or missing input, and doesn't change the original array. Manual test: add three bookmarks for one user and check the last one added is at the top.
 
 ## Each bookmark has a title, description and created at timestamp displayed
 
@@ -44,4 +44,14 @@ Manual test: add a bookmark for User 1, then select User 2. User 2's list is unc
 
 Manual test: submit the form with valid values. The new bookmark appears in the list straight away without reloading the page, and the form fields are emptied.
 
-## The website must score 100% for accessibility in
+## The website must score 100% for accessibility in Lighthouse in the Desktop device mode, for all views in the website
+
+Manual test: Lighthouse, Snapshot mode, Desktop device, Accessibility only, run on three views. A user with no bookmarks passed 18 of 18 checks. A user with bookmarks passed 20 of 20. The form showing its three error messages passed 18 of 18. All three score 100.
+
+## Unit tests must be written for at least one non-trivial function
+
+Unit tests in `bookmarks.test.js` cover `validateBookmark` (valid input, empty title, empty description, a URL that is not http or https, text that is not a URL) and `createBookmark`. Unit tests in `view.test.js` cover `sortNewest` and `formatTimestamp`. Run with `npm test`: all 15 tests pass.
+
+## The project must not contain any dead code. All written JavaScript and CSS must be used.
+
+Manual review: searched every file for unused functions, unused imports, commented-out code and leftover TODO comments, and removed them. `npm test` passes.
