@@ -1,4 +1,5 @@
 import { getData } from "./storage.js";
+import { incrementLike } from "./likes.js";
 
 export function sortNewest(bookmarks) {
   if (!Array.isArray(bookmarks)) return []; //if bookmarks is null or undefined or non-array
@@ -50,6 +51,11 @@ export function renderBookmarks(userId) {
 
     const likeCount = card.querySelector(".like-count");
     likeCount.textContent = bookmark.likes;
+    const likeButton = card.querySelector(".like-button");
+    likeButton.addEventListener("click", () => {
+      incrementLike(userId, bookmark.createdAt);
+      renderBookmarks(userId);
+    });
 
     bookmarkList.append(card);
   });
