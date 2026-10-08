@@ -39,7 +39,6 @@
       "toast" - is used for temporary notification in the UI such as "added to basket" or "changes saved" etc;
       aria-live="polite" tells the screen-reader to announce changes when it has finished speaking (so does not interrupt the user) 
       -->
-      <p id="copy-status" class="toast" aria-live="polite"></p>
     </section>
 
     <section aria-labelledby="add-bookmark-heading">
@@ -71,6 +70,7 @@
         <p>Saved: <time class="bookmark-date"></time></p>
         <div class="bookmark-actions">
           <button type="button" class="copy-button">Copy URL</button>
+          <p id="copy-status" class="toast" aria-live="polite"></p>
           <!-- todo Dona - like button + counter to add here-->
         </div>
       </li>

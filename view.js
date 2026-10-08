@@ -43,7 +43,10 @@ export function renderBookmarks(userId) {
     time.dateTime = new Date(bookmark.createdAt).toISOString();
 
     const copyButton = card.querySelector(".copy-button");
-    copyButton.addEventListener("click", () => copyUrl(bookmark.url));
+    const copyStatus = card.querySelector(".copy-status");
+    copyButton.addEventListener("click", () =>
+      copyUrl(bookmark.url, copyStatus),
+    );
 
     // todo [Dona] like button
 
@@ -52,9 +55,9 @@ export function renderBookmarks(userId) {
 }
 
 // Copies a URL to the clipboard, then tells the user (screen-reader users included)
-async function copyUrl(url) {
-  // The page element is looked up inside the function, so Node tests don't crash. (they dont have document element apparently)
-  const copyStatus = document.getElementById("copy-status");
+async function copyUrl(url, copyStatusEl) {
+  // The page element is looked up inside the function or passed, so Node tests don't crash. (they dont have document element apparently)
+  const copyStatus = copyStatusEl || document.getElementById("copy-status");
 
   try {
     if (!navigator.clipboard) {
